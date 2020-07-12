@@ -24,3 +24,4 @@ Route::get('todos/{todo}','TodoController@show');
 Route::get('todos/{todo}','TodoController@create');
 Route::post('store-todos','TodoController@store');*/
 Route::resource('/todo', 'TodoController');
+Route::get('/todo/{todo}/complete','TodoController@complete');

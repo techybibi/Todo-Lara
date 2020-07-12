@@ -9,7 +9,7 @@ Bibi's Todo's
 
 <h1 class="text-center my-5">WELCOME TO TO DO</h1>
             <div class="row justify-content-center">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-8">
                 
                     <div class="card card-default">
                     <a href="/todo/create" class="btn btn-success btn=sm float-right">Create</a>
@@ -21,7 +21,10 @@ Bibi's Todo's
                                 @foreach($todos as $todo)
                                 <li class="list-group-item">
                                 {{$todo->name}}
-                                <a href="/todo/{{$todo->id}}" class="btn btn-primary btn=sm float-right">View</a>
+                                @if(!$todo->completed)
+                                <a href="/todo/{{$todo->id}}/complete" class="btn btn-warning btn=sm float-right mr-2">Complete</a>
+                                @endif
+                                <a href="/todo/{{$todo->id}}" class="btn btn-primary btn=sm float-right mr-2">View</a>
                                 </li>
                                 @endforeach
                                 
