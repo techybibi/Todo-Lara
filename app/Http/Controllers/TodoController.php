@@ -45,7 +45,7 @@ class TodoController extends Controller
     {
         
         $todo = Todo::find($todoId);
-        $data=$request->all();
+        // $data=$request->all();
         //echo $todoId;
         $todo->name=$data['name'];
         $todo->description=$data['description'];
