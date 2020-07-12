@@ -27,7 +27,7 @@ class TodoController extends Controller
     public function store(todoRequest $request)
     {
         $data=$request->all();
-       // dd($data);
+       // 
         $todo = new Todo();
         $todo->name=$data['name'];
         $todo->description=$data['description'];
@@ -43,13 +43,18 @@ class TodoController extends Controller
     }
     public function update(todoRequest $request, $todoId)
     {
-        
+        $data=$request->all();
         $todo = Todo::find($todoId);
-        // $data=$request->all();
-        //echo $todoId;
+        // //echo $todoId;
         $todo->name=$data['name'];
         $todo->description=$data['description'];
         $todo->save();
         return redirect('/todo');
+    }
+    public function destroy($todoId)
+    {
+        $todo = Todo::find($todoId);
+        $todo->delete();
+        return redirect('/todo')->with('success', 'Post Deleted');
     }
 }

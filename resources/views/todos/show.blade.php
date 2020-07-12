@@ -7,22 +7,25 @@ Todo's | {{$todo->name}}
 @section('content')
 
         <h1 class="text center my-5">{{$todo->name}}</h1>
-
-            <div class="card card-default">
+            <div class="card card-default " >
                 <div class="card-header">
-                    Details
-                    
-            <a href="/todo/{{$todo->id}}/edit">
-            <button type="button" class="btn btn-info float-right ml-3 btn-sm">EDIT</button>
-            </a>
-            <a href="/todo/{{$todo->id}}/edit">
-            <button type="button" class="btn btn-danger float-right ml-3 btn-sm">DELETE</button>
-            </a>
+                Description
                 </div>
                 <div class="card-body">
                 {{$todo->description}}
                 </div>
             </div>
+            <form method="POST" action="/todo/{{$todo->id}}">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-danger float-left ml-3" value="Delete">
+                </div>
+            </form>
+            <a href="/todo/{{$todo->id}}/edit">
+            <button type="button" class="btn btn-info float-left ml-3">EDIT</button>
+            </a>
             
 
 @endsection
